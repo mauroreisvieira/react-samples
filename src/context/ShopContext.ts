@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Product } from '../types/Product';
 
-export default React.createContext({
+export default React.createContext<ShopContextProps>({
   products: [
     { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
     { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
@@ -9,6 +9,8 @@ export default React.createContext({
     { id: 'p4', title: 'Half-dried plant', price: 2.99 }
   ],
   cart: [],
-  addProductToCart: (product: Product) => {},
-  removeProductFromCart: (productId: Product['id']) => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  addProductToCart: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  removeProductFromCart: () => {},
 });

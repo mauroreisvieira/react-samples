@@ -1,9 +1,10 @@
 import type { Product } from '../types/Product';
+import type { ShopContextProps } from './ShopContext';
 
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 
-const addProductToCart = (product: Product, state) => {
+const addProductToCart = (product: Product, state: ShopContextProps) => {
     const updatedCart = [...state.cart];
     const updatedItemIndex = updatedCart.findIndex((item) => item.id === product.id);
 

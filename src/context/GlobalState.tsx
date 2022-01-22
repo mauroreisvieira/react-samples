@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { Product } from '../types/Product';
+import type { Shop } from '../types/Shop';
 
 import ShopContext from './ShopContext';
 import { ShopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from './ShopReducer';
@@ -12,7 +13,7 @@ const GlobalState: React.FC = ( { children }) => {
         { id: 'p4', title: 'Half-dried plant', price: 2.99 },
     ];
 
-    const [cartState, dispatch] = React.useReducer(ShopReducer, { cart: [] });
+    const [cartState, dispatch] = React.useReducer<Shop>(ShopReducer, { cart: [] });
 
     const addProductToCart = (product: Product) => {
         setTimeout(() => {

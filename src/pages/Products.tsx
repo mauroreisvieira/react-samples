@@ -27,13 +27,7 @@ const ProductsPage: React.FC = () => {
                                                         scope="col"
                                                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                                     >
-                                                        ID
-                                                    </th>
-                                                    <th
-                                                        scope="col"
-                                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                                    >
-                                                        Title
+                                                        Name
                                                     </th>
                                                     <th
                                                         scope="col"
@@ -55,9 +49,6 @@ const ProductsPage: React.FC = () => {
                                                 {context.products.map(
                                                     (product) => (
                                                         <tr key={product.id}>
-                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 uppercase">
-                                                                #{product.id}
-                                                            </td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                                                 {product.title}
                                                             </td>
