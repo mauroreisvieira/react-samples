@@ -3,10 +3,10 @@ import * as React from 'react';
 import Navigation from '../components/Navigation';
 import Layout from '../components/Layout';
 
-import { useShopContext } from '../shop/ShopContext';
+import { useShop } from '../shop';
 
 const CartPage: React.FC = () => {
-    const { cart, removeProductFromCart } = useShopContext();
+    const { cart, removeProductFromCart } = useShop();
 
     const quantity = React.useMemo(
         () => cart.reduce((count, curItem) => count + curItem.quantity, 0),

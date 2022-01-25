@@ -1,25 +1,8 @@
 import * as React from 'react';
-import { useRoutes } from 'react-router-dom';
 
-import ShopProvider from './shop/ShopProvider';
+import ShopProvider from './shop';
+import AppRoute from './AppRoute';
 
-import CartPage from './pages/Cart';
-import ProductsPage from './pages/Products';
-import NoMatch from './pages/NoMatch';
-
-const App = (): React.ReactElement => {
-    const routes = useRoutes([
-        {
-            path: '/',
-            element: <ProductsPage />,
-        },
-        {
-            path: '/cart',
-            element: <CartPage />,
-        },
-        { path: '*', element: <NoMatch /> },
-    ]);
-    return <ShopProvider>{routes}</ShopProvider>;
-}
+const App = (): React.ReactElement => <ShopProvider><AppRoute /></ShopProvider>;
 
 export default App;

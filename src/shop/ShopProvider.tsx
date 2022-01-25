@@ -1,13 +1,12 @@
 import * as React from 'react';
 
-import ShopContext from './ShopContext';
+import { ShopContext } from './ShopContext';
 import { useShopReducer } from './ShopReducer';
 
 import type { Product } from '../types/Product';
 import { ReducerActionType } from '../types/Reducer';
-import { Shop } from '../types/Shop';
 
-const ShopProvider: React.FC = ( { children }) => {
+export const ShopProvider: React.FC = ( { children }) => {
     const products: Product[] = [
         { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
         { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
@@ -39,4 +38,3 @@ const ShopProvider: React.FC = ( { children }) => {
     );
 };
 
-export default ShopProvider;
