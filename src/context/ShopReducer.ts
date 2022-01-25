@@ -1,12 +1,15 @@
+import * as React from 'react';
+
 import type { Product } from '../types/Product';
-import type { ShopContextProps } from './ShopContext';
+import type { Shop } from '../types/Shop';
+import { ReducerActionType } from '../types/Reducer';
+import type { ReducerAction } from '../types/Reducer';
 
-export const ADD_PRODUCT = 'ADD_PRODUCT';
-export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
-
-const addProductToCart = (product: Product, state: ShopContextProps) => {
+const addProductToCart = (product: Product, state: Shop) => {
     const updatedCart = [...state.cart];
-    const updatedItemIndex = updatedCart.findIndex((item) => item.id === product.id);
+    const updatedItemIndex = updatedCart.findIndex(
+        (item) => item.id === product.id
+    );
 
     if (updatedItemIndex < 0) {
         updatedCart.push({ ...product, quantity: 1 });
@@ -17,12 +20,15 @@ const addProductToCart = (product: Product, state: ShopContextProps) => {
         updatedItem.quantity++;
         updatedCart[updatedItemIndex] = updatedItem;
     }
+
     return { ...state, cart: updatedCart };
 };
 
-const removeProductFromCart = (productId: Product['id'], state) => {
+const removeProductFromCart = (productId: Product['id'], state: Shop) => {
     const updatedCart = [...state.cart];
-    const updatedItemIndex = updatedCart.findIndex((item) => item.id === productId);
+    const updatedItemIndex = updatedCart.findIndex(
+        (item) => item.id === productId
+    );
 
     const updatedItem = {
         ...updatedCart[updatedItemIndex],
@@ -36,11 +42,11 @@ const removeProductFromCart = (productId: Product['id'], state) => {
     return { ...state, cart: updatedCart };
 };
 
-export const ShopReducer = (state, action) => {
+export const useShopReducer: React.Reducer<Shop, ReducerAction> = (state, action): Shop => {
     switch (action.type) {
-        case ADD_PRODUCT:
+        case ReducerActionType.ADD_PRODUCT:
             return addProductToCart(action.product, state);
-        case REMOVE_PRODUCT:
+        case ReducerActionType.REMOVE_PRODUCT:
             return removeProductFromCart(action.productId, state);
         default:
             return state;

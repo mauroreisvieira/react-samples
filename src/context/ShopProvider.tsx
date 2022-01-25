@@ -1,11 +1,12 @@
 import * as React from 'react';
-import type { Product } from '../types/Product';
-import type { Shop } from '../types/Shop';
 
 import ShopContext from './ShopContext';
-import { ShopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from './ShopReducer';
+import { useShopReducer } from './ShopReducer';
 
-const GlobalState: React.FC = ( { children }) => {
+import type { Product } from '../types/Product';
+import { ReducerActionType } from '../types/Reducer';
+
+const ShopProvider: React.FC = ( { children }) => {
     const products: Product[] = [
         { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
         { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
@@ -13,21 +14,15 @@ const GlobalState: React.FC = ( { children }) => {
         { id: 'p4', title: 'Half-dried plant', price: 2.99 },
     ];
 
-    const [cartState, dispatch] = React.useReducer<Shop>(ShopReducer, { cart: [] });
+    const [{ cart }, dispatch] = React.useReducer(useShopReducer, { cart: [] });
 
     const addProductToCart = (product: Product) => {
-        setTimeout(() => {
-            dispatch({ type: ADD_PRODUCT, product: product });
-        }, 100);
+        dispatch({ type: ReducerActionType.ADD_PRODUCT, product: product });
     };
 
     const removeProductFromCart = (productId: Product['id']) => {
-        setTimeout(() => {
-            dispatch({ type: REMOVE_PRODUCT, productId: productId });
-        }, 700);
+        dispatch({ type: ReducerActionType.REMOVE_PRODUCT, productId: productId });
     };
-
-    const { cart } = cartState;
 
     return (
         <ShopContext.Provider
@@ -43,4 +38,4 @@ const GlobalState: React.FC = ( { children }) => {
     );
 };
 
-export default GlobalState;
+export default ShopProvider;
