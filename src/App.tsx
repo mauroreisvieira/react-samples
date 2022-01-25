@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRoutes } from 'react-router-dom';
 
-import ShopProvider from './context/ShopProvider';
+import ShopProvider from './shop/ShopProvider';
 
 import CartPage from './pages/Cart';
 import ProductsPage from './pages/Products';

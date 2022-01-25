@@ -5,6 +5,7 @@ import { useShopReducer } from './ShopReducer';
 
 import type { Product } from '../types/Product';
 import { ReducerActionType } from '../types/Reducer';
+import { Shop } from '../types/Shop';
 
 const ShopProvider: React.FC = ( { children }) => {
     const products: Product[] = [
