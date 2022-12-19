@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Layout from '../components/Layout';
 
-const NoMatch: React.FC = () => (
+const NoMatch = () => (
     <Layout>
         <div className="flex items-top justify-center min-h-screen sm:items-center sm:pt-0">
             <div className="max-w-xl mx-auto sm:px-6 lg:px-8">

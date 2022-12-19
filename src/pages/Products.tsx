@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 
 import { useShop } from '../shop';
 
-const ProductsPage: React.FC = () => {
+const ProductsPage = () => {
     const { products, cart, addProductToCart } = useShop();
 
     const quantity = React.useMemo(

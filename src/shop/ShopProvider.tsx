@@ -6,7 +6,7 @@ import { useShopReducer } from './ShopReducer';
 import type { Product } from '../types/Product';
 import { ReducerActionType } from '../types/Reducer';
 
-export const ShopProvider: React.FC = ( { children }) => {
+export const ShopProvider = ( { children }: { children: React.ReactNode }) => {
     const products: Product[] = [
         { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
         { id: 'p2', title: 'Harry Potter 3', price: 9.99 },

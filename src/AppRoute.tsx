@@ -4,6 +4,7 @@ import { useRoutes } from 'react-router-dom';
 import CartPage from './pages/Cart';
 import ProductsPage from './pages/Products';
 import NoMatch from './pages/NoMatch';
+import TestPage from './pages/TestPage';
 
 const AppRoute = (): React.ReactElement => {
     const routes = useRoutes([
@@ -14,6 +15,10 @@ const AppRoute = (): React.ReactElement => {
         {
             path: '/cart',
             element: <CartPage />,
+        },
+        {
+            path: '/test',
+            element: <TestPage />,
         },
         { path: '*', element: <NoMatch /> },
     ]);
