@@ -1,8 +1,10 @@
 import * as React from "react";
 import Navigation from "../components/Navigation";
 import Layout from "../components/Layout";
+import { Button } from "../components/Button";
+import { Typography } from "../components/Typography";
 
-const Test = () => {
+const About = () => {
     React.useMemo(() => {
         console.log(1);
     }, []);
@@ -31,7 +33,8 @@ const Test = () => {
             <Layout>
                 <div className="min-h-screen">
                     <div className="p-8">
-                        <h1 className="text-2xl">Test React Lifecycle</h1>
+                        <Typography as="h1" className="text-2xl">About</Typography>
+                        <Button as="a" href="/">Link</Button>
                     </div>
                 </div>
             </Layout>
@@ -39,4 +42,4 @@ const Test = () => {
     );
 };
 
-export default Test;
+export default About;
