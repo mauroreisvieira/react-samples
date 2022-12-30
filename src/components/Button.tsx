@@ -1,31 +1,73 @@
-import React from "react";
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from "../types/Polymorphic";
+import React, { forwardRef } from "react";
+import { classNames } from "../utils";
+import {
+    PolymorphicPropsWithRef,
+    PolymorphicPropsWithoutRef,
+    PolymorphicForwardRefExoticComponent,
+} from "../types/Polymorphic";
+const defaultElement = "button";
 
-interface ButtonBaseProps {
-  children: React.ReactNode;
-  skin?: "primary" | "secondary";
+interface ButtonOwnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    size?: "small" | "medium" | "large";
+    skin?: "primary" | "secondary";
+    svgIcon?: React.HTMLAttributes<SVGElement>;
 }
 
-type ButtonProps<C extends React.ElementType> =
-  PolymorphicComponentPropsWithRef<C, ButtonBaseProps>;
+export type ButtonProps<T extends React.ElementType = typeof defaultElement> =
+    PolymorphicPropsWithRef<ButtonOwnProps, T>;
 
-type ButtonComponent = <C extends React.ElementType = "span">(
-  props: ButtonProps<C>
-) => React.ReactElement | null;
+export const Button: PolymorphicForwardRefExoticComponent<
+    ButtonOwnProps,
+    typeof defaultElement
+> = forwardRef(
+    <T extends React.ElementType = typeof defaultElement>(
+        {
+            as,
+            skin = "primary",
+            size = "medium",
+            svgIcon,
+            className,
+            disabled,
+            onClick,
+            children,
+            ...restProps
+        }: PolymorphicPropsWithoutRef<ButtonOwnProps, T>,
+        ref: React.ComponentPropsWithRef<T>["ref"]
+    ): React.ReactElement => {
+        const Element = as || defaultElement;
+        const rootClassName = "button";
+        const computedClasses = classNames(
+            rootClassName,
+            `${rootClassName}--${skin}`,
+            `${rootClassName}--${size}`,
+            disabled && "is-disabled",
+            className
+        );
 
-export const Button: ButtonComponent = React.forwardRef(
-  <C extends React.ElementType = "button">(
-    { as, skin = "primary", children, ...other }: ButtonProps<C>,
-    ref?: PolymorphicRef<C>
-  ) => {
-    const Component = as || "button";
+        const onHandleClick = (
+            e: React.MouseEvent<HTMLButtonElement>
+        ): void => {
+            if (disabled) return;
+            if (onClick) onClick(e);
+        };
 
-    return (
-        <Component {...other} className={skin} ref={ref}>
-            {children}
-        </Component>
-    );
-  }
+        return (
+            <Element
+                ref={ref}
+                tabIndex={disabled ? -1 : 0}
+                class={computedClasses}
+                onClick={onHandleClick}
+                {...restProps}
+            >
+                {svgIcon && (
+                    <span>
+                        <svg {...svgIcon} />
+                    </span>
+                )}
+                {children}
+            </Element>
+        );
+    }
 );
 
 Button.displayName = "Button";
