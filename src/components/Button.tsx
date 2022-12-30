@@ -10,8 +10,8 @@ const defaultElement = "button";
 const SizeMap = {
     xs: "text-xs py-1 px-2",
     sm: "text-sm py-1 px-2",
-    md: "text-base py-2 px-4",
-    lg: "text-lg py-3 px-6",
+    md: "text-sm py-2 px-4",
+    lg: "text-base py-3 px-6",
 } as const;
 
 const SkinMap = {
@@ -55,7 +55,7 @@ export const Button: PolymorphicForwardRefExoticComponent<
         const Element = as || defaultElement;
 
         const computedClasses = classNames(
-            "inline-flex items-center font-normal rounded",
+            "inline-flex items-center font-normal rounded cursor-pointer",
             "focus-within:outline-none focus-within:ring-offset-2 focus-within:ring-1",
             pill && "rounded-full",
             disabled && "opacity-50 pointer-events-none",

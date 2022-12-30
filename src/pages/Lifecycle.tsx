@@ -44,11 +44,7 @@ const Lifecycle = () => {
         <>
             <Navigation />
             <Main>
-                <div className="min-h-screen">
-                    <div className="p-8 flex justify-between items-center">
-                        <Typography size="h1">Lifecycle</Typography>
-                    </div>
-                </div>
+                <Typography size="h1">Lifecycle</Typography>
             </Main>
         </>
     );

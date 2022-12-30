@@ -8,14 +8,14 @@ import {
 const defaultElement = "p";
 
 const SizeMap = {
-    h1: "font-bold text-5xl",
-    h2: "font-bold text-4xl",
-    h3: "font-bold text-3xl",
-    h4: "font-bold text-2xl",
-    h5: "font-bold text-xl",
-    h6: "font-bold text-base",
-    a: "text-base",
-    p: "text-base",
+    h1: "font-semibold text-5xl mb-6",
+    h2: "font-semibold text-4xl mb-4",
+    h3: "font-semibold text-3xl mb-4",
+    h4: "font-semibold text-2xl mb-3",
+    h5: "font-semibold text-xl mb-3",
+    h6: "font-semibold text-base mb-2",
+    a: "text-indigo-500 hover:text-indigo-700 hover:underline underline-offset-4 mb-2",
+    p: "text-base mb-2",
 };
 
 interface TypographyOwnProps
