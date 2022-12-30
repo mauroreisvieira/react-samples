@@ -2,15 +2,33 @@ import React, { forwardRef } from "react";
 import { classNames } from "../utils";
 import {
     PolymorphicPropsWithRef,
-    PolymorphicPropsWithoutRef,
     PolymorphicForwardRefExoticComponent,
 } from "../types/Polymorphic";
+
 const defaultElement = "button";
 
+const SizeMap = {
+    xs: "text-xs py-1 px-2",
+    sm: "text-sm py-1 px-2",
+    md: "text-base py-2 px-4",
+    lg: "text-lg py-3 px-6",
+} as const;
+
+const SkinMap = {
+    primary:
+        "text-white bg-indigo-500 hover:bg-indigo-700 active:bg-indigo-800 ring-indigo-500",
+    secondary:
+        "text-white bg-gray-500 hover:bg-gray-700 active:bg-gray-800 ring-indigo-500",
+    danger: "text-white bg-rose-500 hover:bg-rose-700 active:bg-rose-800 ring-indigo-500",
+    success:
+        "text-white bg-emerald-500 hover:bg-emerald-700 active:bg-emerald-800 ring-indigo-500",
+    ghost: "hover:bg-gray-100 active:bg-gray-200 ring-indigo-500",
+} as const;
+
 interface ButtonOwnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    size?: "small" | "medium" | "large";
-    skin?: "primary" | "secondary";
-    svgIcon?: React.HTMLAttributes<SVGElement>;
+    skin?: keyof typeof SkinMap;
+    size?: keyof typeof SizeMap;
+    pill?: boolean;
 }
 
 export type ButtonProps<T extends React.ElementType = typeof defaultElement> =
@@ -24,23 +42,25 @@ export const Button: PolymorphicForwardRefExoticComponent<
         {
             as,
             skin = "primary",
-            size = "medium",
-            svgIcon,
+            size = "md",
+            pill = false,
             className,
             disabled,
             onClick,
             children,
             ...restProps
-        }: PolymorphicPropsWithoutRef<ButtonOwnProps, T>,
+        }: PolymorphicPropsWithRef<ButtonOwnProps, T>,
         ref: React.ComponentPropsWithRef<T>["ref"]
     ): React.ReactElement => {
         const Element = as || defaultElement;
-        const rootClassName = "button";
+
         const computedClasses = classNames(
-            rootClassName,
-            `${rootClassName}--${skin}`,
-            `${rootClassName}--${size}`,
-            disabled && "is-disabled",
+            "inline-flex items-center font-normal rounded",
+            "focus-within:outline-none focus-within:ring-offset-2 focus-within:ring-1",
+            pill && "rounded-full",
+            disabled && "opacity-50 pointer-events-none",
+            SkinMap[skin],
+            SizeMap[size],
             className
         );
 
@@ -55,15 +75,10 @@ export const Button: PolymorphicForwardRefExoticComponent<
             <Element
                 ref={ref}
                 tabIndex={disabled ? -1 : 0}
-                class={computedClasses}
+                className={computedClasses}
                 onClick={onHandleClick}
                 {...restProps}
             >
-                {svgIcon && (
-                    <span>
-                        <svg {...svgIcon} />
-                    </span>
-                )}
                 {children}
             </Element>
         );

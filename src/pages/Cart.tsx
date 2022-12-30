@@ -1,9 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
-import Navigation from '../components/Navigation';
-import Layout from '../components/Layout';
+import Navigation from "../components/Navigation";
+import Layout from "../components/Layout";
+import { Button } from "../components/Button";
 
-import { useShop } from '../shop';
+import { useShop } from "../shop";
 
 const CartPage: React.FC = () => {
     const { cart, removeProductFromCart } = useShop();
@@ -104,8 +105,8 @@ const CartPage: React.FC = () => {
                                                                 {quantity}
                                                             </td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                                <button
-                                                                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                                                <Button
+                                                                    skin="danger"
                                                                     onClick={() =>
                                                                         removeProductFromCart(
                                                                             id
@@ -113,7 +114,7 @@ const CartPage: React.FC = () => {
                                                                     }
                                                                 >
                                                                     Remove
-                                                                </button>
+                                                                </Button>
                                                             </td>
                                                         </tr>
                                                     )
@@ -125,8 +126,15 @@ const CartPage: React.FC = () => {
                             </div>
                         </div>
                         <div className="flex items-baseline justify-end my-6 py-2 border-t">
-                            <p className="order-1 text-gray-400 text-xl mr-2">Total: </p>
-                            <p className="order-1 text-gray-900 text-3xl font-medium">{ Number.parseFloat(totalPrice.toString()).toFixed(2) }€</p>
+                            <p className="order-1 text-gray-400 text-xl mr-2">
+                                Total:{" "}
+                            </p>
+                            <p className="order-1 text-gray-900 text-3xl font-medium">
+                                {Number.parseFloat(
+                                    totalPrice.toString()
+                                ).toFixed(2)}
+                                €
+                            </p>
                         </div>
                     </>
                 )}

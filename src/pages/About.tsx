@@ -5,6 +5,8 @@ import { Button } from "../components/Button";
 import { Typography } from "../components/Typography";
 
 const About = () => {
+    const ref = React.useRef<HTMLAnchorElement>(null);
+
     React.useMemo(() => {
         console.log(1);
     }, []);
@@ -32,9 +34,16 @@ const About = () => {
             <Navigation />
             <Layout>
                 <div className="min-h-screen">
-                    <div className="p-8">
-                        <Typography as="h1" className="text-2xl">About</Typography>
-                        <Button as="a" href="/">Link</Button>
+                    <div className="p-8 flex justify-between items-center">
+                        <Typography size="h2">About</Typography>
+                        <Button
+                            as="a"
+                            href="https://github.com/mauroreisvieira/hello-week"
+                            size="sm"
+                            skin="ghost"
+                        >
+                            GitHub Profile
+                        </Button>
                     </div>
                 </div>
             </Layout>

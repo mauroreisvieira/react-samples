@@ -1,9 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
-import Navigation from '../components/Navigation';
-import Layout from '../components/Layout';
+import Navigation from "../components/Navigation";
+import Layout from "../components/Layout";
+import { Button } from "../components/Button";
 
-import { useShop } from '../shop';
+import { useShop } from "../shop";
 
 const ProductsPage = () => {
     const { products, cart, addProductToCart } = useShop();
@@ -12,7 +13,7 @@ const ProductsPage = () => {
         () => cart.reduce((count, curItem) => count + curItem.quantity, 0),
         [cart]
     );
-    return(
+    return (
         <>
             <Navigation cartCount={quantity} />
             <Layout>
@@ -46,26 +47,28 @@ const ProductsPage = () => {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {products.map(
-                                            (product) => (
-                                                <tr key={product.id}>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                                        {product.title}
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                        {product.price}€
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <button
-                                                            className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
-                                                            onClick={() => addProductToCart(product)}
-                                                        >
-                                                            Add
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        )}
+                                        {products.map((product) => (
+                                            <tr key={product.id}>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                                                    {product.title}
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    {product.price}€
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                    <Button
+                                                        skin="success"
+                                                        onClick={() =>
+                                                            addProductToCart(
+                                                                product
+                                                            )
+                                                        }
+                                                    >
+                                                        Add
+                                                    </Button>
+                                                </td>
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>
@@ -75,6 +78,6 @@ const ProductsPage = () => {
             </Layout>
         </>
     );
-}
+};
 
 export default ProductsPage;
