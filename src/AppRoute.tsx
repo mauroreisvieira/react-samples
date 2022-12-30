@@ -5,6 +5,7 @@ import CartPage from './pages/Cart';
 import ProductsPage from './pages/Products';
 import NoMatch from './pages/NoMatch';
 import About from './pages/About';
+import Lifecycle from './pages/Lifecycle';
 
 const AppRoute = (): React.ReactElement => {
     const routes = useRoutes([
@@ -19,6 +20,10 @@ const AppRoute = (): React.ReactElement => {
         {
             path: '/about',
             element: <About />,
+        },
+        {
+            path: '/lifecycle',
+            element: <Lifecycle />,
         },
         { path: '*', element: <NoMatch /> },
     ]);

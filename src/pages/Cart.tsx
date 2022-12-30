@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import Navigation from "../components/Navigation";
-import Layout from "../components/Layout";
+import Navigation from "../Layout/Navigation";
+import Main from "../Layout/Main";
 import { Button } from "../components/Button";
 
 import { useShop } from "../shop";
@@ -22,7 +22,7 @@ const CartPage: React.FC = () => {
     return (
         <>
             <Navigation cartCount={quantity} />
-            <Layout>
+            <Main>
                 {cart.length === 0 ? (
                     <div
                         className="bg-yellow-100 border-t-4 border-yellow-500 rounded-b text-yellow-900 px-4 py-3 shadow-md"
@@ -138,7 +138,7 @@ const CartPage: React.FC = () => {
                         </div>
                     </>
                 )}
-            </Layout>
+            </Main>
         </>
     );
 };

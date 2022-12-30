@@ -20,6 +20,7 @@ const Navigation = ({ cartCount }: NavigationProps) => (
                                 Cart {cartCount ? `(${cartCount})` : ""}
                             </NavLink>
                             <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to="/about">About</NavLink>
+                            <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to="/lifecycle">Lifecycle</NavLink>
                         </div>
                     </div>
                 </div>

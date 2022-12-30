@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import Navigation from "../components/Navigation";
-import Layout from "../components/Layout";
+import Navigation from "../Layout/Navigation";
+import Main from "../Layout/Main";
 import { Button } from "../components/Button";
 
 import { useShop } from "../shop";
@@ -16,7 +16,7 @@ const ProductsPage = () => {
     return (
         <>
             <Navigation cartCount={quantity} />
-            <Layout>
+            <Main>
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -75,7 +75,7 @@ const ProductsPage = () => {
                         </div>
                     </div>
                 </div>
-            </Layout>
+            </Main>
         </>
     );
 };
