@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import type { Product } from '../types/Product';
+import type { Book } from '../types/Book';
 import type { Shop } from '../types/Shop';
 import { ReducerActionType } from '../types/Reducer';
 import type { ReducerAction } from '../types/Reducer';
 
-const addProductToCart = (product: Product, state: Shop) => {
+const addProductToCart = (product: Book, state: Shop) => {
     const updatedCart = [...state.cart];
     const updatedItemIndex = updatedCart.findIndex(
         (item) => item.id === product.id
@@ -24,7 +24,7 @@ const addProductToCart = (product: Product, state: Shop) => {
     return { ...state, cart: updatedCart };
 };
 
-const removeProductFromCart = (productId: Product['id'], state: Shop) => {
+const removeProductFromCart = (productId: Book['id'], state: Shop) => {
     const updatedCart = [...state.cart];
     const updatedItemIndex = updatedCart.findIndex(
         (item) => item.id === productId

@@ -4,11 +4,12 @@ import Navigation from "../Layout/Navigation";
 import Main from "../Layout/Main";
 import { Button } from "../components/Button";
 import { Highlighted } from "../components/Highlighted";
+import { Table } from "../components/Table";
 
 import { useShop } from "../shop";
 
 const ProductsPage = (): React.ReactElement => {
-    const { products, cart, addProductToCart } = useShop();
+    const { books: products, cart, addProductToCart } = useShop();
     const [input, setInput] = useState("");
 
     const quantity = useMemo(
@@ -83,16 +84,22 @@ const ProductsPage = (): React.ReactElement => {
                                     )}
                                 </button>
                             </div>
-                            {filterProducts.length > 0 ? (
-                                <div className="shadow overflow-hidden border-b border-gray-200 rounded-lg">
-                                    <table className="min-w-full divide-y divide-gray-200">
-                                        <thead className="bg-gray-50">
+                            <Table>
+                                {filterProducts.length && (
+                                    <>
+                                        <Table.Head>
                                             <tr>
                                                 <th
                                                     scope="col"
                                                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                                 >
                                                     Name
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                >
+                                                    Category
                                                 </th>
                                                 <th
                                                     scope="col"
@@ -109,9 +116,9 @@ const ProductsPage = (): React.ReactElement => {
                                                     </span>
                                                 </th>
                                             </tr>
-                                        </thead>
+                                        </Table.Head>
 
-                                        <tbody className="bg-white divide-y divide-gray-200">
+                                        <Table.Body>
                                             {filterProducts.map((product) => (
                                                 <tr key={product.id}>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
@@ -120,6 +127,9 @@ const ProductsPage = (): React.ReactElement => {
                                                         >
                                                             {product.title}
                                                         </Highlighted>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                        {product.category}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                         {product.price}€
@@ -138,21 +148,10 @@ const ProductsPage = (): React.ReactElement => {
                                                     </td>
                                                 </tr>
                                             ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            ) : (
-                                <div className="bg-gray-50 py-20 px-16 text-center rounded-lg">
-                                    <h2 className="font-semibold text-slate-900">
-                                        No results found
-                                    </h2>
-                                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                                        We can’t find anything with that term at
-                                        the moment, try searching something
-                                        else.
-                                    </p>
-                                </div>
-                            )}
+                                        </Table.Body>
+                                    </>
+                                )}
+                            </Table>
                         </div>
                     </div>
                 </div>

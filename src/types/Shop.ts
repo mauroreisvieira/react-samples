@@ -1,11 +1,11 @@
-import type { Product } from "./Product";
+import type { Book } from "./Book";
 
-export type Cart =  Product & { quantity: number; };
+export type Cart =  Book & { quantity: number; };
 
 export type Shop = {
-  products: Product[];
+  books: Book[];
   cart: Cart[];
-  addProductToCart: (product: Product) => void;
-  removeProductFromCart: (productId: Product['id']) => void,
+  addProductToCart: (product: Book) => void;
+  removeProductFromCart: (productId: Book['id']) => void,
 }
 

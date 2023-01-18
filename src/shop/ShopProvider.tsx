@@ -1,33 +1,31 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { ShopContext } from './ShopContext';
-import { useShopReducer } from './ShopReducer';
+import { ShopContext } from "./ShopContext";
+import { useShopReducer } from "./ShopReducer";
 
-import type { Product } from '../types/Product';
-import { ReducerActionType } from '../types/Reducer';
+import type { Book } from "../types/Book";
+import { ReducerActionType } from "../types/Reducer";
 
-export const ShopProvider = ( { children }: { children: React.ReactNode }) => {
-    const products: Product[] = [
-        { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
-        { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
-        { id: 'p3', title: 'Used plastic bottle', price: 0.99 },
-        { id: 'p4', title: 'Half-dried plant', price: 2.99 },
-    ];
+import { Books } from "../api/books";
 
+export const ShopProvider = ({ children }: { children: React.ReactNode }) => {
     const [{ cart }, dispatch] = React.useReducer(useShopReducer, { cart: [] });
 
-    const addProductToCart = (product: Product) => {
+    const addProductToCart = (product: Book) => {
         dispatch({ type: ReducerActionType.ADD_PRODUCT, product: product });
     };
 
-    const removeProductFromCart = (productId: Product['id']) => {
-        dispatch({ type: ReducerActionType.REMOVE_PRODUCT, productId: productId });
+    const removeProductFromCart = (productId: Book["id"]) => {
+        dispatch({
+            type: ReducerActionType.REMOVE_PRODUCT,
+            productId,
+        });
     };
 
     return (
         <ShopContext.Provider
             value={{
-                products,
+                books: Books,
                 cart,
                 addProductToCart,
                 removeProductFromCart,
@@ -37,4 +35,3 @@ export const ShopProvider = ( { children }: { children: React.ReactNode }) => {
         </ShopContext.Provider>
     );
 };
-
