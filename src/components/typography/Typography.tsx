@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
-import { classNames } from "../utils";
+import { classNames } from "../../utils/functions";
 import {
     PolymorphicPropsWithRef,
     PolymorphicForwardRefExoticComponent,
-} from "../types/Polymorphic";
+} from "../../utils/types/Polymorphic";
 
 const defaultElement = "p";
 

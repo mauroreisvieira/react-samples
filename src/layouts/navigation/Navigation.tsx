@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { classNames } from "../utils";
+import { classNames } from "../../utils/functions";
 
 interface NavigationProps extends React.HTMLAttributes<HTMLElement> {
     cartCount?: number;
 }
 
-const Navigation = ({
+export const Navigation = ({
     cartCount,
     className,
     ...restProps
@@ -52,5 +52,3 @@ const Navigation = ({
         </nav>
     );
 };
-
-export default Navigation;

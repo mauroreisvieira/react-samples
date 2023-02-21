@@ -1,12 +1,12 @@
 import React, { useMemo, useState } from "react";
 
-import Navigation from "../Layout/Navigation";
-import Main from "../Layout/Main";
+import { Navigation } from "../layouts/navigation";
+import { Main } from "../layouts/main";
 import { Button } from "../components/Button";
 import { Highlighted } from "../components/Highlighted";
 import { Table } from "../components/Table";
 
-import { useShop } from "../shop";
+import { useShop } from "../components/shop";
 
 const ProductsPage = (): React.ReactElement => {
     const { books: products, cart, addProductToCart } = useShop();
@@ -57,8 +57,7 @@ const ProductsPage = (): React.ReactElement => {
                                         setInput(e.target.value);
                                     }}
                                 />
-                                <button
-                                    type="button"
+                                <div
                                     className="absolute inset-y-0 right-0 flex items-center pr-3"
                                 >
                                     {input && (
@@ -82,7 +81,7 @@ const ProductsPage = (): React.ReactElement => {
                                             </svg>
                                         </button>
                                     )}
-                                </button>
+                                </div>
                             </div>
                             <Table>
                                 {filterProducts.length && (

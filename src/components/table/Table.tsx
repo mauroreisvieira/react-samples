@@ -1,5 +1,5 @@
 import React from "react";
-import { EmptyState } from "./EmptyState";
+import { EmptyState } from "../empty-state";
 
 interface TableHeadProps {
     children: React.ReactNode;

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Navigation from "../Layout/Navigation";
-import Main from "../Layout/Main";
+import { Navigation } from "../layouts/navigation";
+import { Main } from "../layouts/main";
 import { Typography } from "../components/Typography";
 
 const About = () => {

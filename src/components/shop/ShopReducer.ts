@@ -1,9 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
-import type { Book } from '../types/Book';
-import type { Shop } from '../types/Shop';
-import { ReducerActionType } from '../types/Reducer';
-import type { ReducerAction } from '../types/Reducer';
+import type { Book, Shop, ReducerAction } from "./types";
+import { ReducerActionType } from "./types";
 
 const addProductToCart = (product: Book, state: Shop) => {
     const updatedCart = [...state.cart];
@@ -24,7 +22,7 @@ const addProductToCart = (product: Book, state: Shop) => {
     return { ...state, cart: updatedCart };
 };
 
-const removeProductFromCart = (productId: Book['id'], state: Shop) => {
+const removeProductFromCart = (productId: Book["id"], state: Shop) => {
     const updatedCart = [...state.cart];
     const updatedItemIndex = updatedCart.findIndex(
         (item) => item.id === productId
@@ -42,7 +40,10 @@ const removeProductFromCart = (productId: Book['id'], state: Shop) => {
     return { ...state, cart: updatedCart };
 };
 
-export const useShopReducer: React.Reducer<Shop, ReducerAction> = (state, action): Shop => {
+export const useShopReducer: React.Reducer<Shop, ReducerAction> = (
+    state,
+    action
+): Shop => {
     switch (action.type) {
         case ReducerActionType.ADD_PRODUCT:
             return addProductToCart(action.product, state);

@@ -15,7 +15,7 @@ export const Highlighted = ({
     const regex = new RegExp(`(${match})`, "gi");
     const parts = children.split(regex);
     return (
-        <span>
+        <>
             {parts
                 .filter((part) => part)
                 .map((part, i) =>
@@ -25,6 +25,6 @@ export const Highlighted = ({
                         <span key={i}>{part}</span>
                     )
                 )}
-        </span>
+        </>
     );
 };

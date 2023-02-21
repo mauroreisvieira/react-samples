@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { useRoutes } from 'react-router-dom';
 
-import CartPage from './pages/Cart';
-import ProductsPage from './pages/Products';
-import NoMatch from './pages/NoMatch';
-import About from './pages/About';
-import Lifecycle from './pages/Lifecycle';
+import CartPage from '../pages/Cart';
+import ProductsPage from '../pages/Products';
+import NoMatch from '../pages/NoMatch';
+import About from '../pages/About';
+import Lifecycle from '../pages/Lifecycle';
 
-const AppRoute = (): React.ReactElement => {
+const Router = (): React.ReactElement => {
     const routes = useRoutes([
         {
             path: '/',
@@ -31,4 +31,4 @@ const AppRoute = (): React.ReactElement => {
     return <div>{routes}</div>;
 };
 
-export default AppRoute;
+export default Router;
