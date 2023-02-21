@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import type { Book, Shop, ReducerAction } from "./types";
 import { ReducerActionType } from "./types";
@@ -40,7 +40,7 @@ const removeProductFromCart = (productId: Book["id"], state: Shop) => {
     return { ...state, cart: updatedCart };
 };
 
-export const useShopReducer: React.Reducer<Shop, ReducerAction> = (
+export const reducer: React.Reducer<Shop, ReducerAction> = (
     state,
     action
 ): Shop => {

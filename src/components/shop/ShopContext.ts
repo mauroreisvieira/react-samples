@@ -1,12 +1,17 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-import * as React from 'react';
+import { createContext, useContext } from 'react';
 import type { Shop } from './types';
 
-export const ShopContext = React.createContext<Shop>({
+const definitionError = (): null => {
+  throw new Error(
+    'Please make sure "ShopProvider" component is wrapping your application.'
+  );
+};
+
+export const ShopContext = createContext<Shop>({
   books: [],
   cart: [],
-  addProductToCart: () => {},
-  removeProductFromCart: () => {},
+  addProductToCart: () => definitionError,
+  removeProductFromCart: () => definitionError,
 });
 
-export const useShop = (): Shop => React.useContext(ShopContext);
+export const useShop = (): Shop => useContext(ShopContext);

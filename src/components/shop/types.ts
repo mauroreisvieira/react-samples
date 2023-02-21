@@ -3,21 +3,22 @@ export type Book = {
     title: string;
     category?: string;
     price: number;
-}
+};
 
-// eslint-disable-next-line no-unused-vars
-export enum ReducerActionType { ADD_PRODUCT, REMOVE_PRODUCT };
+export const ReducerActionType = {
+    ADD_PRODUCT: "ADD_PRODUCT",
+    REMOVE_PRODUCT: "REMOVE_PRODUCT",
+} as const;
 
 export type ReducerAction =
-    | { type: ReducerActionType.ADD_PRODUCT; product: Book; }
-    | { type: ReducerActionType.REMOVE_PRODUCT; productId: Book['id']; }
+    | { type: typeof ReducerActionType.ADD_PRODUCT; product: Book }
+    | { type: typeof ReducerActionType.REMOVE_PRODUCT; productId: Book["id"] };
 
-export type Cart =  Book & { quantity: number; };
+export type Cart = Book & { quantity: number };
 
 export type Shop = {
-  books: Book[];
-  cart: Cart[];
-  addProductToCart: (product: Book) => void;
-  removeProductFromCart: (productId: Book['id']) => void,
-}
-
+    cart: Cart[];
+    books: Book[];
+    addProductToCart?: (product: Book) => void;
+    removeProductFromCart?: (productId: Book["id"]) => void;
+};

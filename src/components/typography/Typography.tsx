@@ -3,7 +3,7 @@ import { classNames } from "../../utils/functions";
 import {
     PolymorphicPropsWithRef,
     PolymorphicForwardRefExoticComponent,
-} from "../../utils/types/Polymorphic";
+} from "../polymorphic";
 
 const defaultElement = "p";
 

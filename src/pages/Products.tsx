@@ -57,9 +57,7 @@ const ProductsPage = (): React.ReactElement => {
                                         setInput(e.target.value);
                                     }}
                                 />
-                                <div
-                                    className="absolute inset-y-0 right-0 flex items-center pr-3"
-                                >
+                                <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                                     {input && (
                                         <button
                                             className="hover:bg-gray-100 hover:text-gray-900 p-1 rounded-full"
@@ -137,6 +135,7 @@ const ProductsPage = (): React.ReactElement => {
                                                         <Button
                                                             skin="success"
                                                             onClick={() =>
+                                                                addProductToCart &&
                                                                 addProductToCart(
                                                                     product
                                                                 )

@@ -17,13 +17,13 @@ export const Alert = ({
     const computedSkin = SkinMap[skin];
     return (
         <div
-            className={`bg-${computedSkin}-100 border-t-4 border-${computedSkin}-500 rounded-b text-${computedSkin}-900 px-4 py-3 shadow-md`}
+            className={`bg-${computedSkin}-100 border-t-4 border-${computedSkin}-600 rounded-b text-${computedSkin}-800 px-4 py-3 shadow-md`}
             role="alert"
         >
             <div className="flex">
                 <div className="py-1">
                     <svg
-                        className={`fill-current h-6 w-6 text-${computedSkin}-500 mr-4`}
+                        className={`fill-current h-6 w-6 text-${computedSkin}-800 mr-4`}
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                     >

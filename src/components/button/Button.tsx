@@ -22,7 +22,7 @@ const SkinMap = {
     danger: "text-white bg-rose-500 hover:bg-rose-700 active:bg-rose-800 ring-indigo-500",
     success:
         "text-white bg-emerald-500 hover:bg-emerald-700 active:bg-emerald-800 ring-indigo-500",
-    ghost: "hover:bg-gray-100 active:bg-gray-200 ring-indigo-500",
+    ghost: "text-current hover:bg-gray-100 active:bg-gray-200 ring-indigo-500",
 } as const;
 
 interface ButtonOwnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

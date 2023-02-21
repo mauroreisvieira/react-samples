@@ -1,5 +1,5 @@
-import * as React from "react";
-
+import React, { useMemo } from "react";
+import { FormattedMessage } from "react-intl";
 import { Navigation } from "../layouts/navigation";
 import { Main } from "../layouts/main";
 import { Button } from "../components/Button";
@@ -7,15 +7,15 @@ import { Alert } from "../components/alert";
 
 import { useShop } from "../components/shop";
 
-const CartPage: React.FC = () => {
+const CartPage = (): React.ReactElement => {
     const { cart, removeProductFromCart } = useShop();
 
-    const quantity = React.useMemo(
+    const quantity = useMemo(
         () => cart.reduce((count, curItem) => count + curItem.quantity, 0),
         [cart]
     );
 
-    const totalPrice = React.useMemo(
+    const totalPrice = useMemo(
         () => cart.reduce((count, curItem) => count + curItem.price, 0),
         [cart]
     );
@@ -26,9 +26,11 @@ const CartPage: React.FC = () => {
             <Main>
                 {cart.length === 0 ? (
                     <Alert skin="warning">
-                        <p className="font-bold">No Item in the Cart!</p>
+                        <p className="font-bold">
+                            <FormattedMessage id="cart.alert.title" />
+                        </p>
                         <p className="text-sm">
-                            Make sure you know how these changes affect you.
+                            <FormattedMessage id="cart.alert.text" />
                         </p>
                     </Alert>
                 ) : (
@@ -90,6 +92,7 @@ const CartPage: React.FC = () => {
                                                                 <Button
                                                                     skin="danger"
                                                                     onClick={() =>
+                                                                        removeProductFromCart &&
                                                                         removeProductFromCart(
                                                                             id
                                                                         )

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 import { Navigation } from "../layouts/navigation";
 import { Main } from "../layouts/main";
 import { Typography } from "../components/Typography";
 
-const About = () => {
-    const ref = React.useRef<HTMLAnchorElement>(null);
+const About = (): React.ReactElement => {
+    const ref = useRef<HTMLAnchorElement>(null);
 
     useEffect(() => {
         console.log("href:", ref.current?.href);
@@ -15,7 +16,9 @@ const About = () => {
             <Navigation />
             <Main>
                 <div className="flex justify-between items-center">
-                    <Typography size="h1">About</Typography>
+                    <Typography size="h1">
+                        <FormattedMessage id="about.title" />
+                    </Typography>
                 </div>
                 <Typography
                     ref={ref}
@@ -25,8 +28,7 @@ const About = () => {
                     GitHub Profile
                 </Typography>
                 <Typography>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Velit, illum?
+                    <FormattedMessage id="about.text" />
                 </Typography>
             </Main>
         </>

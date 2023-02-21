@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from "react";
 
 type Merge<T, U> = Omit<T, keyof U> & U;
