@@ -3,6 +3,7 @@ import React, { Reducer, useReducer } from "react";
 import { ShopContext } from "./ShopContext";
 import { reducer } from "./ShopReducer";
 
+import { ReducerActionType } from "./types";
 import type { Book, Shop, ReducerAction } from "./types";
 
 import { Books } from "../../api/Books";
@@ -11,12 +12,12 @@ export const ShopProvider = ({ children }: { children: React.ReactNode }) => {
     const [{ cart, books }, dispatch] = useReducer<Reducer<Shop, ReducerAction>>(reducer, { cart: [], books: Books, });
 
     const addProductToCart = (product: Book) => {
-        dispatch({ type: "ADD_PRODUCT", product });
+        dispatch({ type: ReducerActionType.ADD_PRODUCT, product });
     };
 
     const removeProductFromCart = (productId: Book["id"]) => {
         dispatch({
-            type: "REMOVE_PRODUCT",
+            type: ReducerActionType.REMOVE_PRODUCT,
             productId,
         });
     };
