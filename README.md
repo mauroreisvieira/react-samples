@@ -1,6 +1,6 @@
 # React Samples
 
-This repository use latest version of [React](https://reactjs.org/) and the purpose of that is to test all `React` functionalities.
+This repository use latest version of [React](https://reactjs.org/) and the purpose of that is to test `React` functionalities.
 
 ## Prerequisites
 
@@ -12,6 +12,7 @@ This repository use latest version of [React](https://reactjs.org/) and the purp
 - [Nextjs](https://nextjs.org/)
 - [React](https://reactjs.org/)
 - [Tailwind CSS](https://tailwindcss.com)
+- [react-intl](https://formatjs.io/docs/getting-started/installation)
 
 ## Available Scripts
 
